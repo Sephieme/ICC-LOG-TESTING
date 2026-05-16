@@ -1,0 +1,115 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-image: url("7cf893_c88ece6849f44d4cbd4a4e8e2853177c~mv2.avif");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ... keep your existing General Reset and body styles ... */
+
+/* Position the User Profile in the top right */
+.user-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    padding: 10px 15px;
+    border-radius: 50px; /* Pill shape */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100; /* Ensures it stays above the background */
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Makes user image circular */
+    object-fit: cover;
+    border: 2px solid #9d00ff;
+}
+
+.user-profile span {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+/* Rest of your existing .Container and .btn styles below... */
+
+.Container {
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Header and Logo Section */
+.select.name {
+    margin-bottom: 2.5rem;
+}
+
+.select.name img {
+    width: 80px; /* Adjust based on your logo size */
+    margin-bottom: 1rem;
+}
+
+.select.name h1 {
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* Button Container */
+.select.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Button Styling */
+.btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: #9d00ff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Remove default link styling */
+a {
+    text-decoration: none;
+    display: block;
+}
