@@ -1,0 +1,181 @@
+<!-- inventory.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Dashboard</title>
+  <link rel="stylesheet" href="CSS/inventory.css">
+</head>
+<body>
+
+<div class="container">
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="logo.png" alt="ICC Logo" class="logo-img">
+      <div class = "icon">
+        <h2>Industrial </h2>
+        <h2>Controls </h2>
+        <h2> Corporation</h2>
+      </div>
+    </div>
+    <ul>
+      <li> <a href="dashboard.html" class="Design">Dashboard</a> </li>
+      <li class="active">Inventory</li>
+      <li> <a href="borrowed.html" class="Design">Borrowed</a></li>
+     
+      <li> <a href="log.html" class="Design">Audit Logs</a></li>
+      <li> <a href="user.html" class="Design">Users</a></li>
+      <li>Logout</li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+    <section id="inventory" class="section active">
+        <h1>Inventory</h1>
+        <section class = "logs1">
+            <div class="headerss">
+                <input id="search" placeholder="Search Items...">
+                <button class="export">Export PDF</button>
+            </div>
+            <div class="cards">
+                <div class="top">
+                    <h3>All Inventory Items</h3>
+                    <div>
+                        <select id="sort">
+                            <option value="">Sort</option>
+                            <option value="name-asc">Name (A–Z)</option>
+                            <option value="name-desc">Name (Z–A)</option>
+                            <option value="date-asc">Date (Oldest)</option>
+                            <option value="date-desc">Date (Newest)</option>
+                            <option value="qty-asc">Quantity (Low–High)</option>
+                            <option value="qty-desc">Quantity (High–Low)</option>
+                        </select>
+                        <select id="statusF">
+                            <option value="">Status</option> 
+                            <option>Available</option>
+                            <option>Borrowed</option>   
+                            <option>Damage</option>
+                            <option>Out-of-Stock</option>
+                            <option>Lost</option>
+                        </select>
+                        <select id="catF">
+                            <option value="">All Categories</option>
+                            <option>Tools</option>
+                            <option>Consumables</option>
+                            <option>Equipments</option>
+                        </select>
+                        <button onclick="bulkDelete()" class="bulk-del">Delete Selected</button>
+                        <button class="add" onclick="openModal()">+ Add New Item</button>
+                    </div>
+                </div>
+                <div id="modal" class="modal">
+                    <div class="modal-box">
+                        <div class="modal-header">
+                            <h3 id="modalTitle">Add Item</h3>
+                            <span class="close-btn" onclick="closeModal()">×</span>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Item Name</label>
+                                <input id="m_name" maxlength="40">
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select id="m_cat">
+                                    <option>Tools</option>
+                                    <option>Consumables</option> 
+                                    <option>Equipments</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Brand</label>
+                                <input id="m_brand" maxlength="40">
+                            </div>
+                            <div class="form-group">
+                                <label>Added By</label>
+                                <input id="m_addedBy" maxlength="40">
+                            </div>
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input type="number" id="m_qty">
+                                </div>
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select id="m_status">
+                                        <option>Available</option>
+                                        
+                                        <option>Damage</option>
+                                        <option>Lost</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input id="m_loc" maxlength="40">
+                            </div>
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" id="m_date">
+                            </div>
+                            <div class="form-group">
+                                <label>Remarks</label>
+                                <input type="text" id="m_remark" maxlength="40" placeholder="Enter remarks (max 40 chars)"> 
+                            </div>
+                            <div class="form-group">
+                                <label>Item Image</label>
+                                <input
+                                type="file"
+                                id="m_img"
+                                accept="image/*">
+                                <img
+                                id="previewImg"
+                                class="preview-img"
+                                src=""
+                                style="display:none;">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn cancel" onclick="closeModal()">Cancel</button>
+                            <button class="btn save" onclick="saveItem()">Save</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-card">
+                    <table>
+                    <thead>
+                        <tr class="grr">
+                            <th><input type="checkbox" id="selectAll"></th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Brand</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>Remarks</th><th>Added By</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb"></tbody>
+                </table>
+                </div>
+               <div class="footer">
+                <button onclick="prev()">Previous</button>
+                <span id="pg"></span>
+                <button onclick="next()">Next</button>
+                <span id="totalItems" class="total-items"></span>
+               </div>
+            </div>
+        </section>
+    </section>
+</main>
+</div>
+<div id="tooltip" class="tooltip"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+<script src="Java/inventorys.js"></script>
+</body>
+</html>

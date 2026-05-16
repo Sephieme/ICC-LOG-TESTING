@@ -1,0 +1,97 @@
+<!-- user.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Dashboard</title>
+  <link rel="stylesheet" href="CSS/user.css">
+</head>
+<body>
+
+<div class="container">
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="logo.png" alt="ICC Logo" class="logo-img">
+      <div class = "icon">
+        <h2>Industrial </h2>
+        <h2>Controls </h2>
+        <h2> Corporation</h2>
+      </div>
+    </div>
+    <ul>
+      <li> <a href="dashboard.html" class="Design">Dashboard</a> </li>
+      <li> <a href="inventory.html" class="Design">Inventory</a></li>
+      <li> <a href="borrowed.html" class="Design">Borrowed</a></li>
+      
+      <li> <a href="log.html" class="Design">Audit Logs</a></li>
+      <li  class="active">Users</li>
+      <li>Logout</li>
+    </ul>
+  </aside>
+
+  <main class="main-contents">
+    <section id="logs" class="header">
+        <h1>Users List</h1>
+        <div class="header-controls">
+            <input type="text" id="searchUser" placeholder="Search users...">
+            <button class="add-btn" id="addUserBtn" onclick="openModal()"> +Add User</button>
+        </div>
+    </section>
+     <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody id="usersTable"></tbody>
+      </table>
+    </div>
+
+    <div id="userPagination" class="pagination"></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="userModal" class="modal">
+  <div class="modal-box">
+
+    <h3 id="modalTitle">Add User</h3>
+
+    <input type="text" id="u_name" placeholder="Full Name">
+    <input type="text" id="u_username" placeholder="Username">
+
+    <select id="u_role">
+      <option value="">Select Role</option>
+      <option value="Admin">Admin</option>
+      <option value="Staff">Staff</option>
+      <option value="Viewer">Viewer</option>
+    </select>
+
+    <select id="u_status">
+      <option value="Active">Active</option>
+      <option value="Inactive">Inactive</option>
+    </select>
+
+    <button onclick="saveUser()">Save</button>
+    <button onclick="closeModal()">Cancel</button>
+    
+
+   
+
+    
+
+
+  </main>
+</div>
+
+<script src="Java/users.js"></script>
+</body>
+</html>

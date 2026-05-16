@@ -1,0 +1,203 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Inventory Dashboard</title>
+  <link rel="stylesheet" href="CSS/dashboard.css">
+</head>
+<body>
+
+<div class="container">
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="logo.png" alt="ICC Logo" class="logo-img">
+      <div class = "icon">
+        <h2>Industrial </h2>
+        <h2>Controls </h2>
+        <h2> Corporation</h2>
+      </div>
+    </div>
+    <ul>
+      <li class="active">Dashboard</li>
+      <li > <a href="inventory.html" class="Design">Inventory</a></li>
+      <li> <a href="borrowed.html" class="Design">Borrowed</a></li>
+      
+      <li> <a href="log.html" class="Design">Audit Logs</a></li>
+      <li> <a href="user.html" class="Design">Users</a></li>
+      <li>Logout</li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+  <section id="dashboard" class="section active">
+    <h1>Dashboard</h1>
+    <div class="Dashboard1">
+      <div class="main-header">
+      
+      </div>
+
+      <!-- STATS CARDS -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div>
+            <p>Total Items</p>
+            <h3>0</h3>
+          </div>
+          <div class="stat-icon">📦</div>
+        </div>
+        <div class="stat-card">
+          <div>
+            <p>Total Quantity</p>
+            <h3>0</h3>
+          </div>
+          <div class="stat-icon">🔢</div>
+        </div>
+        <div class="stat-card">
+          <div>
+            <p>Available</p>
+            <h3>0</h3>
+          </div>
+          <div class="stat-icon">✅</div>
+        </div>
+        <div class="stat-card">
+          <div>
+            <p>Borrowed</p>
+            <h3>0</h3>
+          </div>
+          <div class="stat-icon">📤</div>
+        </div>
+      </div>
+
+      <!-- TWO COLUMN LAYOUT: LEFT | RIGHT -->
+      <div class="two-column-layout">
+        
+        <!-- LEFT COLUMN: Inventory Item Status Table -->
+        <div class="left-column">
+          <div class="card status-table-card">
+            <div class="card-header">
+              <span>📋 Inventory Item Status <span style="font-size: 11px; color: #666;">(Last 10 items)</span></span>
+              <select id="statusSelect">
+                <option value="All">All Categories</option>
+                <option value="Available">Available</option>
+                <option value="Borrowed">Borrowed</option>
+                <option value="Damage">Damage</option>
+                <option value="Out-of-Stock">Out-of-Stock</option>
+                <option value="Lost">Lost</option>
+              </select>
+            </div>
+            <div class="table-wrapper">
+              <table class="inventory-status-table">
+                <thead>
+                  <tr>
+                    <th>Item Name</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="4" style="text-align:center;">Loading...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card-footer">
+              <a href="inventory.html">View All Inventory →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Inventory Overview (Top) + Recent Activities (Bottom) -->
+        <div class="right-column">
+          
+          <!-- TOP: Inventory Overview Table -->
+          <div class="card">
+            <div class="card-header">
+              <span>📊 Inventory Overview</span>
+            </div>
+            <div class="table-wrapper">
+              <table class="inventory-overview">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Total</th>
+                    <th>Percentage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="status-available">✅ Available</td>
+                    <td>0</td>
+                    <td>0%</td>
+                  </tr>
+                  <tr>
+                    <td class="status-borrowed">📤 Borrowed</td>
+                    <td>0</td>
+                    <td>0%</td>
+                  </tr>
+                  <tr>
+                    <td class="status-damage">⚠️ Damage</td>
+                    <td>0</td>
+                    <td>0%</td>
+                  </tr>
+                  <tr>
+                    <td class="status-out">❌ Out-of-Stock</td>
+                    <td>0</td>
+                    <td>0%</td>
+                  </tr>
+                  <tr>
+                    <td class="status-lost">🔍 Lost</td>
+                    <td>0</td>
+                    <td>0%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- BOTTOM: Recent Activities Table -->
+          <div class="recent-activity">
+            <div class="activity-header">
+              <h3>📋 Recent Activities</h3>
+              <button onclick="refreshActivities()" class="refresh-activities-btn">🔄 Refresh</button>
+            </div>
+            <div class="table-wrapper">
+              <table class="recent-activities-table">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Item Name</th>  <!-- Changed from "Item" to "Item Name" -->
+                    <th>Action</th>
+                    <th>Details</th>
+                    <th>Date/Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="5" style="text-align:center;">Loading...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="view-all">
+              <button onclick="viewAllActivities()" class="view-all-btn">View All Activities →</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- REMOVED: Chart Container and Borrowed Preview sections -->
+
+    </div>
+  </section>
+ </main>
+</div>
+
+<script src="Java/dashboards.js"></script>
+</body>
+</html>

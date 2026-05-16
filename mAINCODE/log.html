@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Audit Logs - ICC Inventory System</title>
+  <link rel="stylesheet" href="CSS/log.css">
+</head>
+<body>
+
+<div class="container">
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="logo.png" alt="ICC Logo" class="logo-img">
+      <div class="icon">
+        <h2>Industrial</h2>
+        <h2>Controls</h2>
+        <h2>Corporation</h2>
+      </div>
+    </div>
+    <ul>
+      <li><a href="dashboard.html" class="Design">Dashboard</a></li>
+      <li><a href="inventory.html" class="Design">Inventory</a></li>
+      <li><a href="borrowed.html" class="Design">Borrowed</a></li>
+      <li class="active">Audit Logs</li>
+      <li><a href="user.html" class="Design">Users</a></li>
+      <li>Logout</li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+    <section id="logs" class="section active">
+      <div class="main-contents">
+        <h1>Audit Logs</h1>
+
+        <!-- Search Bar -->
+        <div class="header">
+          <input type="text" id="searchLog" placeholder="🔍 Search logs by user, item, action...">
+        </div>
+
+        <!-- FILTER SECTION - Responsive -->
+        <div class="filter-section">
+          <div class="filter-grid">
+            <!-- Action Filter -->
+            <div class="filter-group">
+              <label>🎯 Action Type</label>
+              <select id="actionFilter" class="filter-control">
+                <option value="All">📋 All Actions</option>
+                <option value="Add">➕ Add</option>
+                <option value="Edit">✏️ Edit</option>
+                <option value="Delete">🗑️ Delete</option>
+                <option value="Bulk Delete">⚠️ Bulk Delete</option>
+                <option value="Borrow">📤 Borrow</option>
+                <option value="Return">🔄 Return</option>
+              </select>
+            </div>
+
+            <!-- From Date Filter -->
+            <div class="filter-group">
+              <label>📅 From Date</label>
+              <input type="date" id="dateFrom" class="filter-control">
+            </div>
+
+            <!-- To Date Filter -->
+            <div class="filter-group">
+              <label>📅 To Date</label>
+              <input type="date" id="dateTo" class="filter-control">
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="filter-group filter-actions">
+              <label>&nbsp;</label>
+              <div class="filter-buttons">
+                <button onclick="applyFilters()" class="apply-filter-btn">✓ Apply Filters</button>
+                <button onclick="resetFilters()" class="reset-filter-btn">🔄 Reset</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Filters Display -->
+          <div id="activeFilters" class="active-filters"></div>
+        </div>
+
+        <!-- STATS CARDS -->
+        <div class="stats">
+          <div class="card">
+            <h3 id="totalLogs">0</h3>
+            <p>Total Logs</p>
+          </div>
+          <div class="card">
+            <h3 id="borrowLogs">0</h3>
+            <p>Borrow Actions</p>
+          </div>
+          <div class="card">
+            <h3 id="returnLogs">0</h3>
+            <p>Return Actions</p>
+          </div>
+          <div class="card">
+            <h3 id="systemLogs">0</h3>
+            <p>System Actions</p>
+          </div>
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>User</th>
+                <th>Item Code</th>
+                <th>Item Name</th>
+                <th>Action</th>
+                <th>Description</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody id="auditTable">
+              <!-- JS renders here -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="btn-area">
+          <button onclick="clearLogs()">🗑️ Clear All Logs</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="Java/logs.js"></script>
+</body>
+</html>
